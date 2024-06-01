@@ -4,16 +4,13 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": [
-        "plugin:@nx/nx/angular",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
+      "extends": ["plugin:@nx/nx/angular", "plugin:@angular-eslint/template/process-inline-templates"],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "App",
+            "prefix": "ac",
             "style": "camelCase"
           }
         ],
@@ -21,7 +18,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "ac",
             "style": "kebab-case"
           }
         ]

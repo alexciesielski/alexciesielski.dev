@@ -1,8 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer reset, tw-utilities;
 
-html, body {
-display: block;
-height: 100%;
+@layer reset {
+  @tailwind base;
+}
+
+@layer tw-utilities {
+  @tailwind components;
+  @tailwind utilities;
 }
