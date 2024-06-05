@@ -2,6 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { mdiHome } from '@mdi/js';
+import { inject as injectVercelAnalytics } from '@vercel/analytics';
 import { filter, map, startWith } from 'rxjs';
 import { Icon } from './components/icon';
 
@@ -43,6 +44,10 @@ import { Icon } from './components/icon';
   },
 })
 export class AppComponent {
+  constructor() {
+    injectVercelAnalytics();
+  }
+
   private readonly router = inject(Router);
   readonly showHeader = this.router.events.pipe(
     filter((event) => event instanceof NavigationEnd),
