@@ -12,7 +12,9 @@ import { GithubEventService, GithubEventType } from '../../github/github.service
   standalone: true,
   imports: [Icon, NgOptimizedImage, NgScrollbar, AsyncPipe],
   template: `
-    <p class="text-primary z-20 p-4 pb-0 text-lg font-normal tracking-tight lg:text-7xl dark:text-white">
+    <p
+      class="text-primary z-20 p-4 pb-0 text-lg font-normal tracking-tight md:text-5xl lg:text-6xl xl:text-7xl dark:text-white"
+    >
       Github Activity
     </p>
     <div class="absolute -bottom-12 -right-12 opacity-5">
@@ -39,11 +41,19 @@ import { GithubEventService, GithubEventType } from '../../github/github.service
 
             <div class="">
               <span> {{ activity.didWhat }} </span>
-              <span class="text-secondary/45 italic"> {{ activity.didTitle }}</span>
-              in
-              <span> {{ activity.didWhere }} </span>
+              <span class="text-secondary/45 italic transition-colors group-hover:text-emerald-600">
+                {{ activity.didTitle }}</span
+              >
+              @if ($any(activity).connectingWord !== undefined) {
+                <span> {{ $any(activity).connectingWord }} </span>
+              } @else {
+                in
+              }
+              <span class="text-secondary/45 italic transition-colors group-hover:text-emerald-600">
+                {{ activity.didWhere }}
+              </span>
             </div>
-            <span class="self-start text-right text-sm"> {{ activity.timeAgo }} </span>
+            <span class="self-start text-right text-xs"> {{ activity.timeAgo }} </span>
           </a>
         }
       </div>
@@ -109,9 +119,27 @@ export class GithubActivityComponent {
               didTitle: event.payload.issue?.title,
               clickTarget: event.payload.comment?.html_url,
             };
+          case 'WatchEvent':
+            return {
+              ...event,
+              didWhat: `starred`,
+              didWhere: event.repo.name,
+              didTitle: '',
+              clickTarget: event.repo.url,
+              connectingWord: '',
+            };
+          default:
+            return {
+              ...event,
+              didWhat: `did something`,
+              didWhere: event.repo.name,
+              didTitle: event.type,
+              clickTarget: event.repo.url,
+            };
         }
       }),
     ),
+
     map((events) =>
       events.filter((event) => {
         if (event.org?.login === 'alexciesielski') {

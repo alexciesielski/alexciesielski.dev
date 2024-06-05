@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { mdiGithub, mdiLinkedin } from '@mdi/js';
+import { mdiGithub, mdiLinkedin, mdiReddit } from '@mdi/js';
 import { Icon } from '../../components/icon';
 
 @Component({
@@ -7,21 +7,32 @@ import { Icon } from '../../components/icon';
   standalone: true,
   imports: [Icon],
   template: `
-    <div class="w-full">
-      <p class="text-primary text-xl font-normal tracking-tight lg:text-8xl dark:text-white">Find me on</p>
-    </div>
-    <div class="flex h-full w-full items-center justify-around">
-      <a class="group w-auto transition-transform hover:scale-110" href="https://www.linkedin.com/in/alexciesielskidev">
-        <ac-icon class="h-16 transition-colors group-hover:fill-emerald-500" [icon]="mdiLinkedin" />
-      </a>
-      <a class="group w-auto transition-transform hover:scale-110" href="https://www.github.com/alexciesielski">
-        <ac-icon class="h-16 transition-colors group-hover:fill-emerald-500" [icon]="mdiGithub" />
-      </a>
+    <div class="flex h-full w-full flex-col justify-around">
+      <p class="text-primary text-xl font-normal tracking-tight lg:text-7xl dark:text-white">Find me on</p>
+      <div class="flex h-full w-full items-center justify-around">
+        @for (findMeOn of findMeOns; track findMeOn.href) {
+          <a class="group w-auto p-1 transition-transform hover:scale-110" [href]="findMeOn.href">
+            <ac-icon class="h-16 transition-colors group-hover:fill-emerald-600" [icon]="findMeOn.icon" />
+          </a>
+        }
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FindMeComponent {
-  readonly mdiGithub = mdiGithub;
-  readonly mdiLinkedin = mdiLinkedin;
+  readonly findMeOns = [
+    {
+      href: 'https://www.linkedin.com/in/alexciesielskidev',
+      icon: mdiLinkedin,
+    },
+    {
+      href: 'https://www.github.com/alexciesielski',
+      icon: mdiGithub,
+    },
+    {
+      href: 'https://www.reddit.com/user/alexciesielski/',
+      icon: mdiReddit,
+    },
+  ];
 }

@@ -1,27 +1,32 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-import { GITHUB_PUBLIC_EVENTS_RESPONSE } from './public-events-response';
+import { of, tap } from 'rxjs';
 
-export type GithubEventType = 'IssuesEvent' | 'PullRequestEvent' | 'PushEvent' | 'CreateEvent' | 'IssueCommentEvent';
+export type GithubEventType =
+  | 'IssuesEvent'
+  | 'PullRequestEvent'
+  | 'PushEvent'
+  | 'CreateEvent'
+  | 'IssueCommentEvent'
+  | 'WatchEvent';
 
 @Injectable({ providedIn: 'root' })
 export class GithubEventService {
-  constructor() {}
+  constructor(private readonly http: HttpClient) {}
+
+  private readonly lastFetched = localStorage.getItem('github-last-fetched');
+  private readonly cachedEvents = localStorage.getItem('github-events');
 
   fetchAll() {
-    return of(GITHUB_PUBLIC_EVENTS_RESPONSE);
+    if (this.lastFetched && this.cachedEvents && Date.now() - Number(this.lastFetched) < 1000 * 60 * 5) {
+      return of(JSON.parse(this.cachedEvents));
+    }
+
+    return this.http.get('/api/v1/github-activity.json').pipe(
+      tap((events) => {
+        localStorage.setItem('github-last-fetched', String(Date.now()));
+        localStorage.setItem('github-events', JSON.stringify(events));
+      }),
+    );
   }
-
-  // private async fetchAll() {
-  //   const octokit = new Octokit({ auth: import.meta.env['GITHUB_TOKEN'] });
-
-  //   const response = await octokit.request('GET /users/{username}/events/public', {
-  //     username: 'alexciesielski',
-  //     headers: {
-  //       'X-GitHub-Api-Version': '2022-11-28',
-  //     },
-  //   });
-
-  //   return response.data;
-  // }
 }

@@ -1,0 +1,56 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, auto);
+}
+
+@media screen and (min-width: theme('screens.md')) {
+  #about-me {
+    grid-area: about-me;
+  }
+
+  #availability {
+    grid-area: availability;
+  }
+
+  #find-me {
+    grid-area: find-me;
+  }
+
+  #github-activity {
+    grid-area: github-activity;
+  }
+
+  #blog-posts {
+    grid-area: blog-posts;
+  }
+
+  #open-blog {
+    grid-area: open-blog;
+  }
+}
+
+@media screen and (min-width: theme('screens.lg')) {
+  :host {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      'about-me   availability github-activity'
+      'find-me    open-blog    github-activity'
+      'blog-posts blog-posts   github-activity';
+  }
+}
+
+@media screen and (min-width: theme('screens.xl')) {
+  :host {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      'about-me  availability find-me    github-activity'
+      'about-me  blog-posts   blog-posts github-activity'
+      'open-blog blog-posts   blog-posts github-activity';
+
+    max-width: 1920px;
+    place-content: center;
+  }
+}

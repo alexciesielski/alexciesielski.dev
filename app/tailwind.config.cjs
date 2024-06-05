@@ -7,87 +7,79 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   content: [
     './index.html',
-    join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html,md}'),
+    join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html,md,svg}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
     fontSize: {
       xs: [
-        '0.75rem',
+        'var(--fs-xs)',
         {
           lineHeight: '1rem',
         },
       ],
       sm: [
-        '0.875rem',
+        'var(--fs-sm)',
         {
           lineHeight: '1.5rem',
         },
       ],
       base: [
-        '1rem',
+        'var(--fs-base)',
+        {
+          lineHeight: '1.5rem',
+        },
         {
           lineHeight: '1.75rem',
         },
       ],
       lg: [
-        '1.125rem',
+        'var(--fs-lg)',
         {
           lineHeight: '2rem',
         },
       ],
       xl: [
-        '1.25rem',
+        'var(--fs-xl)',
         {
           lineHeight: '2rem',
         },
       ],
       '2xl': [
-        '1.5rem',
+        'var(--fs-2xl)',
         {
           lineHeight: '2rem',
         },
       ],
       '3xl': [
-        '2rem',
+        // '2rem',
+        'var(--fs-3xl)',
         {
           lineHeight: '2.5rem',
         },
       ],
       '4xl': [
-        '2.5rem',
+        'var(--fs-4xl)',
         {
           lineHeight: '3.5rem',
         },
       ],
       '5xl': [
-        '3rem',
+        'var(--fs-5xl)',
         {
           lineHeight: '3.5rem',
         },
       ],
       '6xl': [
-        '3.75rem',
+        'var(--fs-6xl)',
         {
-          lineHeight: '1',
+          lineHeight: '4rem',
         },
       ],
       '7xl': [
-        '4.5rem',
+        'var(--fs-7xl)',
         {
-          lineHeight: '1.1',
-        },
-      ],
-      '8xl': [
-        '6rem',
-        {
-          lineHeight: '1',
-        },
-      ],
-      '9xl': [
-        '8rem',
-        {
-          lineHeight: '1',
+          lineHeight: '5.5rem',
         },
       ],
     },
@@ -96,14 +88,9 @@ module.exports = {
         thick: '0px 7px 32px rgb(0 0 0 / 35%);',
       },
       colors: {
-        // Gray
         primary: '#101010',
         secondary: '#1a1a1a',
         tertiary: '#262626',
-        // Purple
-        //primary:"#080118",
-        //secondary:"#140d23",
-        //tertiary:"#1d1333",
         white: '#ececec',
         gray: colors.gray,
       },
@@ -115,10 +102,16 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
+      container: {
+        center: true,
+        screens: {
+          sm: '100%',
+          md: '100%',
+          lg: '640px',
+          xl: '768px',
+        },
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    // ...
-  ],
+  plugins: [require('@tailwindcss/typography')],
 };

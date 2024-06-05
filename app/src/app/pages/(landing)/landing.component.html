@@ -1,23 +1,45 @@
-<app-tile class="lg:row-span-2">
-  <ac-about-me />
+<app-tile id="about-me" class="overflow-hidden p-0 sm:min-h-96 lg:row-span-2 lg:min-h-0">
+  <ac-about-me class="contents" />
 </app-tile>
 
-<app-tile class="bg-gradient-to-br from-emerald-100 to-emerald-500 text-right">
-  <ac-availability />
+<app-tile id="availability" class="bg-gradient-to-br from-emerald-100 to-emerald-500 text-right">
+  <ac-availability class="contents" />
 </app-tile>
 
-<app-tile>
-  <ac-find-me />
+<app-tile id="find-me">
+  <ac-find-me class="contents" />
 </app-tile>
 
-<app-tile class="relative row-span-3 overflow-hidden p-0">
-  <ac-github-activity />
+<app-tile id="github-activity" class="relative overflow-hidden p-0 sm:min-h-96 lg:min-h-0 xl:row-span-3">
+  <ac-github-activity class="contents" />
 </app-tile>
 
-<app-tile>
+<app-tile id="blog-posts" class="lg:col-span-2 lg:row-span-2">
+  <p class="text-primary text-xl font-normal tracking-tight lg:mb-12 lg:text-6xl dark:text-white">
+    Most recent blog posts
+  </p>
+  <div class="grid h-full grid-flow-col gap-8">
+    @for (post of posts | slice: 0 : 4; track post.slug) {
+      <a
+        class="group relative flex flex-col gap-y-4 rounded transition-all contain-content hover:scale-[101%] hover:text-emerald-600"
+        [href]="'blog/' + post.slug"
+      >
+        <div class="block aspect-square max-h-32 overflow-hidden rounded-lg">
+          <img class="h-full w-full object-cover" [src]="post.attributes.coverImage" [alt]="post.attributes.title" />
+        </div>
+        <span class="text-3xl transition-transform group-hover:-translate-y-0">{{ post.attributes.title }} </span>
+        <span class="text-sm transition-transform group-hover:translate-y-0">
+          {{ post.attributes.description }}
+        </span>
+      </a>
+    }
+  </div>
+</app-tile>
+
+<app-tile id="open-blog" class="from-sky-100 to-sky-500">
   <div class="grid h-full w-full place-content-center">
     <a
-      class="text-primary cursor-pointer text-center text-xl font-normal tracking-tight underline underline-offset-8 transition-all hover:scale-110 lg:text-8xl dark:text-white"
+      class="text-primary cursor-pointer text-center text-xl font-normal tracking-tight underline underline-offset-8 transition-all hover:scale-110 hover:text-emerald-600 lg:text-6xl dark:text-white"
       style="text-decoration-thickness: 0.25rem"
       [routerLink]="'/blog'"
     >
@@ -25,13 +47,3 @@
     </a>
   </div>
 </app-tile>
-
-<!-- @for (post of posts; track post.attributes.title) {
-  <app-tile>
-    <div class="w-full">
-      <p class="text-primary text-xl font-normal tracking-tight lg:text-8xl dark:text-white">
-        {{ post.attributes.title }}
-      </p>
-    </div>
-  </app-tile>
-} -->
