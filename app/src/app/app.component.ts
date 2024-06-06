@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { mdiHome } from '@mdi/js';
 import { inject as injectVercelAnalytics } from '@vercel/analytics';
-import { filter, map, shareReplay, startWith, tap } from 'rxjs';
+import { filter, map, shareReplay, startWith } from 'rxjs';
 import { Icon } from './components/icon';
 
 @Component({
@@ -54,7 +54,6 @@ export class AppComponent {
     filter((event) => event instanceof NavigationEnd),
     startWith(this.router.url),
     map(() => this.router.url !== '/'),
-    tap((_) => console.log('show header', _)),
     shareReplay({ bufferSize: 1, refCount: true }),
   );
 
