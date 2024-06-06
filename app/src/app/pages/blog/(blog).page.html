@@ -2,10 +2,12 @@
   <a class="container relative mx-auto block overflow-hidden rounded-xl" [href]="'/blog/' + latestPost.slug">
     <img
       class="h-full w-full object-cover"
-      [src]="latestPost.attributes.coverImage"
+      [ngSrc]="latestPost.attributes.coverImage"
       [alt]="'Latest blog post cover image'"
     />
-    <div class="absolute bottom-0 z-10 flex h-[40%] w-full flex-col justify-between p-4 opacity-75 backdrop-blur">
+    <div
+      class="absolute bottom-0 z-10 flex h-[30%] w-full flex-col justify-between bg-white/50 p-4 opacity-75 backdrop-blur"
+    >
       <div>
         <h2 class="text-2xl font-bold">{{ latestPost.attributes.title }}</h2>
         <p class="">{{ latestPost.attributes.description }}</p>

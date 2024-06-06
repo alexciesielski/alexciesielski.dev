@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgScrollbar } from 'ngx-scrollbar';
@@ -9,7 +9,7 @@ import { injectBlogPostAttributes } from '../../util/inject-blog-post-attributes
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [RouterLink, Tile, NgScrollbar, Icon, DatePipe],
+  imports: [RouterLink, Tile, NgScrollbar, Icon, DatePipe, NgOptimizedImage],
   templateUrl: './(blog).page.html',
   host: {
     class: 'block h-full',

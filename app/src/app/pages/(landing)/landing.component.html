@@ -24,13 +24,16 @@
   <div class="grid h-full grid-flow-col gap-8">
     @for (post of posts | slice: 0 : 4; track post.slug) {
       <a
-        class="group relative flex flex-col gap-y-4 rounded transition-all contain-content hover:scale-[101%] hover:text-emerald-600"
+        class="group relative flex flex-col gap-y-2 rounded transition-all contain-content hover:scale-[101%] hover:text-emerald-600"
         [href]="'blog/' + post.slug"
       >
         <div class="block aspect-square max-h-32 overflow-hidden rounded-lg">
           <img class="h-full w-full object-cover" [src]="post.attributes.coverImage" [alt]="post.attributes.title" />
         </div>
         <span class="text-3xl transition-transform group-hover:-translate-y-0">{{ post.attributes.title }} </span>
+        <span class="text-primary/50 text-sm transition-transform group-hover:-translate-y-0 dark:text-neutral-300"
+          >{{ post.attributes.dateRelative }}
+        </span>
         <span class="text-sm transition-transform group-hover:translate-y-0">
           <analog-markdown [content]="post.attributes.description" />
         </span>

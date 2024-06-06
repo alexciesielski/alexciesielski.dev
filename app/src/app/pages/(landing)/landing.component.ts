@@ -2,6 +2,7 @@ import { MarkdownComponent } from '@analogjs/content';
 import { SlicePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { formatDistanceToNow } from 'date-fns';
 import { Tile } from '../../components/tile';
 import { injectBlogPostAttributes } from '../../util/inject-blog-post-attributes';
 import { AboutMeComponent } from './about-me.component';
@@ -31,5 +32,13 @@ import { ProjectsComponent } from './projects.component';
   styleUrl: './landing.component.css',
 })
 export default class LandingComponent {
-  readonly posts = injectBlogPostAttributes();
+  readonly posts = injectBlogPostAttributes()
+    .sort((a, b) => new Date(b.attributes.date).valueOf() - new Date(a.attributes.date).valueOf())
+    .map((post) => ({
+      ...post,
+      attributes: {
+        ...post.attributes,
+        dateRelative: formatDistanceToNow(new Date(post.attributes.date), { addSuffix: true }),
+      },
+    }));
 }
