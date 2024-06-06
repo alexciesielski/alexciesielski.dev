@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { mdiGithub, mdiLinkedin, mdiReddit } from '@mdi/js';
+import { mdiGithub, mdiLinkedin, mdiReddit, mdiStackOverflow } from '@mdi/js';
 import { Icon } from '../../components/icon';
 
 @Component({
@@ -36,6 +36,10 @@ export class FindMeComponent {
     {
       href: 'https://www.reddit.com/user/alexciesielski/',
       icon: mdiReddit,
+    },
+    {
+      href: 'https://stackoverflow.com/users/1808126/alexander-ciesielski',
+      icon: mdiStackOverflow,
     },
   ];
 }
