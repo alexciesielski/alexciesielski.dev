@@ -1,15 +1,15 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { mdiHome } from '@mdi/js';
 import { inject as injectVercelAnalytics } from '@vercel/analytics';
-import { filter, map, startWith } from 'rxjs';
+import { filter, map, shareReplay, startWith, tap } from 'rxjs';
 import { Icon } from './components/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, Icon, AsyncPipe],
+  imports: [RouterOutlet, RouterLink, Icon, AsyncPipe, NgClass],
   template: `
     @if (showHeader | async) {
       <header class="flex-0 px-8">
@@ -19,7 +19,7 @@ import { Icon } from './components/icon';
           @for (link of links; track link.url; let last = $last) {
             <a
               [routerLink]="link.url"
-              class="text-primary/75 group flex cursor-pointer items-center gap-x-2 transition-all hover:scale-105 hover:fill-emerald-600 hover:text-emerald-600"
+              class="text-primary/75 group flex cursor-pointer items-center gap-x-2 transition-all hover:scale-105 hover:fill-emerald-600 hover:text-emerald-600 dark:text-neutral-100"
             >
               @if (link.icon) {
                 <ac-icon [icon]="link.icon" class="fill-primary/75 h-6 group-hover:fill-emerald-600" />
@@ -35,12 +35,13 @@ import { Icon } from './components/icon';
         </nav>
       </header>
     }
-    <main class="flex-1 overflow-auto p-4 {{ (showHeader | async) ? 'pt-0' : 'mx-auto' }}">
+
+    <main class="flex-1 overflow-auto p-4" [ngClass]="(showHeader | async) ? 'pt-0' : 'mx-auto'">
       <router-outlet />
     </main>
   `,
   host: {
-    class: 'flex flex-col h-screen w-screen cursor-default',
+    class: 'flex flex-col h-screen w-screen cursor-default dark:bg-neutral-800',
   },
 })
 export class AppComponent {
@@ -53,6 +54,8 @@ export class AppComponent {
     filter((event) => event instanceof NavigationEnd),
     startWith(this.router.url),
     map(() => this.router.url !== '/'),
+    tap((_) => console.log('show header', _)),
+    shareReplay({ bufferSize: 1, refCount: true }),
   );
 
   readonly links = [

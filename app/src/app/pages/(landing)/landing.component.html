@@ -2,7 +2,10 @@
   <ac-about-me class="contents" />
 </app-tile>
 
-<app-tile id="availability" class="bg-gradient-to-br from-emerald-100 to-emerald-500 text-right">
+<app-tile
+  id="availability"
+  class="bg-gradient-to-br from-emerald-100 to-emerald-500 text-right dark:from-emerald-900 dark:to-emerald-600"
+>
   <ac-availability class="contents" />
 </app-tile>
 
@@ -15,7 +18,7 @@
 </app-tile>
 
 <app-tile id="blog-posts" class="lg:col-span-2 lg:row-span-2">
-  <p class="text-primary text-xl font-normal tracking-tight lg:mb-12 lg:text-6xl dark:text-white">
+  <p class="text-primary text-xl font-normal tracking-tight lg:mb-12 lg:text-6xl dark:text-neutral-100">
     Most recent blog posts
   </p>
   <div class="grid h-full grid-flow-col gap-8">
@@ -36,10 +39,10 @@
   </div>
 </app-tile>
 
-<app-tile id="open-blog" class="from-sky-100 to-sky-500">
+<app-tile id="open-blog" class="from-sky-100 to-sky-500 dark:from-sky-900 dark:to-sky-600">
   <div class="grid h-full w-full place-content-center">
     <a
-      class="text-primary cursor-pointer text-center text-xl font-normal tracking-tight underline underline-offset-8 transition-all hover:scale-110 hover:text-emerald-600 lg:text-6xl dark:text-white"
+      class="text-primary cursor-pointer text-center text-xl font-normal tracking-tight underline underline-offset-8 transition-all hover:scale-105 hover:text-emerald-600 lg:text-6xl dark:text-neutral-100 dark:hover:text-emerald-200"
       style="text-decoration-thickness: 0.25rem"
       [routerLink]="'/blog'"
     >

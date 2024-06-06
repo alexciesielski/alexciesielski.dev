@@ -24,7 +24,7 @@ import { ProjectsComponent } from './projects.component';
   ],
   templateUrl: './landing.component.html',
   host: {
-    class: 'h-full grid gap-4',
+    class: 'h-full w-full grid gap-4',
   },
   styleUrl: './landing.component.css',
 })

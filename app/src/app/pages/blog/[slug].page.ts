@@ -10,8 +10,13 @@ import { PostAttributes } from '../../post-attributes';
   template: `
     @if (post$ | async; as post) {
       <article>
-        <div class="mb-8 overflow-hidden">
+        <div class="mb-4 overflow-hidden">
           <img class="h-[25vh] w-full object-cover" [src]="post.attributes.coverImage" />
+        </div>
+        <div class="mb-4 flex items-center gap-4">
+          @for (tag of post.attributes.tags; track tag) {
+            <span class="rounded bg-gray-100 p-1 text-sm text-gray-500">#{{ tag }}</span>
+          }
         </div>
         <analog-markdown class="prose lg:prose-lg" [content]="post.content" />
       </article>

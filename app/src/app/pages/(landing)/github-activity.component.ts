@@ -12,20 +12,16 @@ import { GithubEventService, GithubEventType } from '../../github/github.service
   standalone: true,
   imports: [Icon, NgOptimizedImage, NgScrollbar, AsyncPipe],
   template: `
-    <p
-      class="text-primary z-20 p-4 pb-0 text-lg font-normal tracking-tight md:text-5xl lg:text-6xl xl:text-7xl dark:text-white"
-    >
-      Github Activity
-    </p>
+    <p class="z-20 p-4 pb-0 text-lg font-normal tracking-tight md:text-5xl lg:text-6xl xl:text-7xl">Github Activity</p>
     <div class="absolute -bottom-12 -right-12 opacity-5">
-      <ac-icon class="fill-secondary text-secondary h-[25dvw]" [icon]="mdiGithub" />
+      <ac-icon class="fill-secondary h-[25dvw] dark:fill-neutral-300" [icon]="mdiGithub" />
     </div>
 
     <ng-scrollbar class="z-10" [visibility]="'hover'">
       <div class="flex h-full w-full flex-col gap-y-2 py-2">
         @for (activity of githubActivity | async; track activity.id) {
           <a
-            class="text-secondary group grid grid-cols-[24px,1fr,auto] items-center gap-x-2 px-4 py-2 transition-all hover:rounded-md hover:shadow"
+            class="text-secondary/50 group grid grid-cols-[24px,1fr,auto] items-center gap-x-2 px-4 py-2 transition-all hover:rounded-md hover:shadow dark:text-neutral-400"
             [href]="activity.clickTarget"
             target="_blank"
           >
@@ -41,7 +37,7 @@ import { GithubEventService, GithubEventType } from '../../github/github.service
 
             <div class="">
               <span> {{ activity.didWhat }} </span>
-              <span class="text-secondary/45 italic transition-colors group-hover:text-emerald-600">
+              <span class="text-secondary italic transition-colors group-hover:text-emerald-600 dark:text-neutral-200">
                 {{ activity.didTitle }}</span
               >
               @if ($any(activity).connectingWord !== undefined) {
@@ -49,7 +45,7 @@ import { GithubEventService, GithubEventType } from '../../github/github.service
               } @else {
                 in
               }
-              <span class="text-secondary/45 italic transition-colors group-hover:text-emerald-600">
+              <span class="text-secondary italic transition-colors group-hover:text-emerald-600 dark:text-neutral-200">
                 {{ activity.didWhere }}
               </span>
             </div>
