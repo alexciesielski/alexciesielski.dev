@@ -17,7 +17,7 @@ import { NgScrollbar } from 'ngx-scrollbar';
       />
       <div class="text-right leading-6">
         <h1 class="text-primary mb-2 text-2xl font-semibold dark:text-neutral-100">Alexander Ciesielski</h1>
-        <h2 class="text-sm text-zinc-500 dark:text-zinc-400">Software Engineer, Frontend Architect, Angular Expert</h2>
+        <h2 class="text-sm text-zinc-500 dark:text-zinc-400">Software Engineer<br />Angular Expert</h2>
       </div>
     </div>
 

@@ -25,11 +25,11 @@ import { GithubEventService, GithubEventType } from '../../github/github.service
             [href]="activity.clickTarget"
             target="_blank"
           >
-            @if (activity.org) {
+            @if (activity.icon) {
               <img
                 class="rounded-full transition-all group-hover:scale-110"
-                [ngSrc]="activity.org.avatar_url"
-                [alt]="activity.org.login"
+                [ngSrc]="activity.icon"
+                [alt]="activity.type"
                 [width]="24"
                 [height]="24"
               />
@@ -82,6 +82,7 @@ export class GithubActivityComponent {
               didWhere: event.repo.name,
               didTitle: event.payload.issue?.title,
               clickTarget: event.payload.issue?.html_url,
+              icon: event.org?.avatar_url,
             };
           case 'PullRequestEvent':
             return {
@@ -90,6 +91,7 @@ export class GithubActivityComponent {
               didWhere: event.repo.name,
               didTitle: event.payload.pull_request?.title,
               clickTarget: event.payload.pull_request?.html_url,
+              icon: event.payload.pull_request?.base?.repo?.owner?.avatar_url,
             };
           case 'PushEvent':
             return {
@@ -98,6 +100,7 @@ export class GithubActivityComponent {
               didWhere: event.repo.name,
               didTitle: event.payload.commits?.[0]?.message,
               clickTarget: event.payload.commits?.[0]?.url,
+              icon: event.org?.avatar_url,
             };
           case 'CreateEvent':
             return {
@@ -106,6 +109,7 @@ export class GithubActivityComponent {
               didWhere: event.repo.name,
               didTitle: event.payload.ref,
               clickTarget: event.repo.url,
+              icon: event.org?.avatar_url,
             };
           case 'IssueCommentEvent':
             return {
@@ -114,6 +118,7 @@ export class GithubActivityComponent {
               didWhere: event.repo.name,
               didTitle: event.payload.issue?.title,
               clickTarget: event.payload.comment?.html_url,
+              icon: event.org?.avatar_url,
             };
           case 'WatchEvent':
             return {
@@ -123,6 +128,7 @@ export class GithubActivityComponent {
               didTitle: '',
               clickTarget: event.repo.url,
               connectingWord: '',
+              icon: event.org?.avatar_url,
             };
           default:
             return {
@@ -131,6 +137,7 @@ export class GithubActivityComponent {
               didWhere: event.repo.name,
               didTitle: event.type,
               clickTarget: event.repo.url,
+              icon: event.org?.avatar_url,
             };
         }
       }),
@@ -138,9 +145,11 @@ export class GithubActivityComponent {
 
     map((events) =>
       events.filter((event) => {
-        if (event.org?.login === 'alexciesielski') {
+        if ((event.type as GithubEventType) === 'PushEvent') {
           return false;
-        } else if (event.repo.name.startsWith('alexciesielski')) {
+        }
+
+        if ((event.type as GithubEventType) === 'CreateEvent') {
           return false;
         }
 

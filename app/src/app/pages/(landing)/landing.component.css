@@ -30,6 +30,18 @@
   }
 }
 
+@media screen and (min-width: theme('screens.md')) {
+  :host {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      'about-me     github-activity'
+      'availability github-activity'
+      'find-me      open-blog'
+      'blog-posts   blog-posts';
+  }
+}
+
 @media screen and (min-width: theme('screens.lg')) {
   :host {
     grid-template-columns: 1fr 1fr 1fr;
