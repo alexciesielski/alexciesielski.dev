@@ -1,3 +1,4 @@
+import { MarkdownComponent } from '@analogjs/content';
 import { SlicePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -21,6 +22,7 @@ import { ProjectsComponent } from './projects.component';
     GithubActivityComponent,
     ProjectsComponent,
     SlicePipe,
+    MarkdownComponent,
   ],
   templateUrl: './landing.component.html',
   host: {

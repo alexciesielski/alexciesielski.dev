@@ -32,7 +32,7 @@
         </div>
         <span class="text-3xl transition-transform group-hover:-translate-y-0">{{ post.attributes.title }} </span>
         <span class="text-sm transition-transform group-hover:translate-y-0">
-          {{ post.attributes.description }}
+          <analog-markdown [content]="post.attributes.description" />
         </span>
       </a>
     }
