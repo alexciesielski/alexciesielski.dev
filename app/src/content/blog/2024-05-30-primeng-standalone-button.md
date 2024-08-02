@@ -1,7 +1,7 @@
 ---
 title: Standalone Button in PrimeNG
 slug: primeng-standalone-button
-description: The `primeng/button` is now a standalone Angular component and directive.
+description: The `primeng/button` is now a standalone Angular component and directive thanks to my recent PR.
 coverImage: https://pbs.twimg.com/profile_images/1709093305135312896/bhPUuzvm_400x400.png
 coverImageWidth: 400
 date: 2024-05-30

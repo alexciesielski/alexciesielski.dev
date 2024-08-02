@@ -3,6 +3,7 @@ import { SlicePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { formatDistanceToNow } from 'date-fns';
+import { TagComponent } from '../../components/tag';
 import { Tile } from '../../components/tile';
 import { injectBlogPostAttributes } from '../../util/inject-blog-post-attributes';
 import { AboutMeComponent } from './about-me.component';
@@ -24,6 +25,7 @@ import { ProjectsComponent } from './projects.component';
     ProjectsComponent,
     SlicePipe,
     MarkdownComponent,
+    TagComponent,
   ],
   templateUrl: './landing.component.html',
   host: {

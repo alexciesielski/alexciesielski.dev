@@ -1,16 +1,16 @@
-<div class="grid h-full grid-cols-[1fr] grid-rows-[1fr,2fr] gap-x-8">
+<div class="grid h-full grid-cols-[1fr] grid-rows-[1fr,2fr] gap-x-8 gap-y-16">
   <a class="container relative mx-auto block overflow-hidden rounded-xl" [href]="'/blog/' + latestPost.slug">
     <img
       class="h-full w-full object-cover"
-      [ngSrc]="latestPost.attributes.coverImage"
+      [src]="latestPost.attributes.coverImage"
       [alt]="'Latest blog post cover image'"
     />
     <div
-      class="absolute bottom-0 z-10 flex h-[30%] w-full flex-col justify-between bg-white/50 p-4 opacity-75 backdrop-blur"
+      class="absolute bottom-0 z-10 flex h-[33%] w-full flex-col justify-between bg-white/50 p-4 opacity-75 backdrop-blur"
     >
       <div>
         <h2 class="text-2xl font-bold">{{ latestPost.attributes.title }}</h2>
-        <p class="">{{ latestPost.attributes.description }}</p>
+        <p>{{ latestPost.attributes.description }}</p>
       </div>
       <div>
         <span class="text-sm opacity-60"> {{latestPost.attributes.date | date }} </span>
@@ -18,7 +18,7 @@
     </div>
   </a>
 
-  <div class="flex flex-col gap-y-4">
+  <div class="container flex flex-col gap-y-4">
     <p class="text-3xl">Recent posts</p>
     <ul class="flex flex-col justify-between gap-y-4">
       @for(post of latestPosts; track post.slug) {
@@ -37,5 +37,3 @@
     </ul>
   </div>
 </div>
-
-<hr class="my-8" />
