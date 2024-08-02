@@ -1,4 +1,4 @@
-<app-tile id="about-me" class="overflow-hidden p-0 sm:min-h-96 lg:row-span-2 lg:min-h-0">
+<app-tile id="about-me" class="p-0 sm:min-h-96 md:overflow-hidden lg:row-span-2 lg:min-h-0">
   <ac-about-me class="contents" />
 </app-tile>
 
@@ -13,7 +13,7 @@
   <ac-find-me class="contents" />
 </app-tile>
 
-<app-tile id="github-activity" class="relative overflow-hidden p-0 sm:min-h-96 lg:min-h-0 xl:row-span-3">
+<app-tile id="github-activity" class="relative p-0 sm:min-h-96 md:overflow-hidden lg:min-h-0 xl:row-span-3">
   <ac-github-activity class="contents" />
 </app-tile>
 
@@ -21,7 +21,7 @@
   <p class="text-primary text-xl font-normal tracking-tight lg:mb-12 lg:text-6xl dark:text-neutral-100">
     Most recent blog posts
   </p>
-  <div class="grid h-full grid-flow-col gap-8">
+  <div class="grid h-full grid-cols-2 gap-2 overflow-auto p-1 md:gap-8">
     @for (post of posts | slice: 0 : 4; track post.slug) {
       <a
         class="text-truncate group relative flex flex-col gap-y-2 overflow-hidden rounded p-2 shadow transition-all contain-content hover:scale-[101%] hover:text-emerald-600 hover:shadow-md"
