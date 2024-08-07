@@ -13,7 +13,7 @@ import { GithubEventService, GithubEventType } from '../../github/github.service
   imports: [Icon, NgOptimizedImage, NgScrollbar, AsyncPipe],
   template: `
     <p class="z-20 p-4 pb-0 text-lg font-normal tracking-tight md:text-5xl lg:text-6xl xl:text-7xl">Github Activity</p>
-    <div class="absolute -bottom-12 -right-12 opacity-5">
+    <div class="absolute top-[50%] opacity-5 lg:-bottom-12 lg:-right-12">
       <ac-icon class="fill-secondary h-[25dvw] dark:fill-neutral-300" [icon]="mdiGithub" />
     </div>
 
