@@ -41,7 +41,7 @@ import { Icon } from './components/icon';
     </main>
   `,
   host: {
-    class: 'flex flex-col h-screen w-screen cursor-default dark:bg-neutral-800',
+    class: 'flex flex-col h-dvh w-screen cursor-default dark:bg-neutral-800',
   },
 })
 export class AppComponent {
