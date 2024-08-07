@@ -100,7 +100,7 @@ export class GithubActivityComponent {
               didWhere: event.repo.name,
               didTitle: event.payload.commits?.[0]?.message,
               clickTarget: event.payload.commits?.[0]?.url,
-              icon: event.org?.avatar_url,
+              icon: event.actor?.avatar_url,
             };
           case 'CreateEvent':
             return {
@@ -145,17 +145,20 @@ export class GithubActivityComponent {
 
     map((events) =>
       events.filter((event) => {
-        if ((event.type as GithubEventType) === 'PushEvent') {
-          return false;
-        }
-
         if ((event.type as GithubEventType) === 'CreateEvent') {
-          return false;
+          debugger;
+          if (
+            event.payload.ref_type === 'branch' ||
+            event.payload.ref_type === 'tag' ||
+            event.payload.ref_type === 'repository'
+          ) {
+            return false;
+          }
         }
 
         return true;
       }),
     ),
-    map((events) => events.slice(0, 20)),
+    map((events) => events.slice(0, 50)),
   );
 }
