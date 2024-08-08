@@ -10,7 +10,7 @@ import { PostAttributes } from '../../post-attributes';
   imports: [AsyncPipe, MarkdownComponent, DatePipe, TagComponent],
   template: `
     @if (post$ | async; as post) {
-      <article>
+      <article class="dark:text-white">
         <div class="mb-4 overflow-hidden">
           <img class="h-[25vh] w-full object-cover" [src]="post.attributes.coverImage" />
         </div>
@@ -22,7 +22,7 @@ import { PostAttributes } from '../../post-attributes';
         <div class="mb-4">
           <p class="text-sm text-gray-400">by: Alexander Ciesielski, {{ post.attributes.date | date }}</p>
         </div>
-        <analog-markdown class="prose lg:prose-lg" [content]="post.content" />
+        <analog-markdown class="prose lg:prose-lg dark:prose-invert" [content]="post.content" />
       </article>
     }
   `,

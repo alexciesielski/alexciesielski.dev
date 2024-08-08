@@ -47,8 +47,8 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
-      'about-me   availability github-activity'
-      'find-me    open-blog    github-activity'
+      'about-me   find-me      availability'
+      'about-me   open-blog    github-activity'
       'blog-posts blog-posts   github-activity';
   }
 }
