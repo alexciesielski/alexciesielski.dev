@@ -2,7 +2,7 @@ import { ContentFile, injectContent, injectContentFiles, MarkdownComponent } fro
 import { RouteMeta } from '@analogjs/router';
 import { JsonPipe, NgOptimizedImage } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
-import { mdiOpenInNew } from '@mdi/js';
+import { mdiEmail, mdiOpenInNew } from '@mdi/js';
 import { compareAsc } from 'date-fns';
 import { take, tap } from 'rxjs';
 import { Icon } from '../../components/icon';
@@ -157,6 +157,19 @@ export default class CVComponent {
       icon: '🇬🇧',
     },
   ];
+
+  readonly email = (() => {
+    const emailSignal = signal<string>('');
+    setTimeout(() => {
+      const first = 'recruit';
+      const second = 'alexciesielski';
+      const third = 'dev';
+      emailSignal.set(`${first}@${second}.${third}`);
+    }, 100);
+    return emailSignal;
+  })();
+
+  readonly emailIcon = mdiEmail;
 
   toggleProjectExpanded(slug: string) {
     this.expandedProjects.update((expandedProjects) => ({

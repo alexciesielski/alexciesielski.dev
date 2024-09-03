@@ -2,7 +2,7 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { mdiHome } from '@mdi/js';
-
+// import { inject as injectVercelAnalytics } from '@vercel/analytics';
 import { filter, map, shareReplay, startWith } from 'rxjs';
 import { Icon } from './components/icon';
 
@@ -12,7 +12,7 @@ import { Icon } from './components/icon';
   imports: [RouterOutlet, RouterLink, Icon, AsyncPipe, NgClass],
   template: `
     @if (showHeader | async) {
-      <header class="flex-0 px-8">
+      <header class="flex-0 px-8 shadow">
         <nav class="flex items-center gap-x-4 py-2 print:hidden">
           <h1></h1>
 
@@ -29,7 +29,7 @@ import { Icon } from './components/icon';
             </a>
 
             @if (!last) {
-              /
+              <span>·</span>
             }
           }
         </nav>
@@ -46,7 +46,7 @@ import { Icon } from './components/icon';
 })
 export class AppComponent {
   constructor() {
-    // setTimeout(() => injectVercelAnalytics({ framework: 'angular' }));
+    // injectVercelAnalytics();
   }
 
   private readonly router = inject(Router);
@@ -66,10 +66,6 @@ export class AppComponent {
     {
       url: '/blog',
       label: 'Blog',
-    },
-    {
-      url: '/cv',
-      label: 'CV',
     },
   ];
 }

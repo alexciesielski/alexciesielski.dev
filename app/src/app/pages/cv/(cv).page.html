@@ -4,19 +4,29 @@
       <div>
         <div class="flex flex-wrap items-center gap-4 print:flex-col print:items-start print:gap-0">
           <h1 class="text-4xl">Alexander Ciesielski</h1>
-          <div class="flex flex-wrap gap-4 text-xl print:text-xs">
+          <div class="flex flex-wrap items-center gap-4 text-xl print:text-xs">
             @for(language of languages; track language.name) {
-            <span [aria-describedby]="language.name" [hlmTooltipTrigger]="language.name + ': ' + language.skill">
-              {{ language.icon }} <span class="hidden print:inline">{{language.skill}}</span>
+            <span
+              class="flex gap-1"
+              [aria-describedby]="language.name"
+              [hlmTooltipTrigger]="language.name + ': ' + language.skill"
+            >
+              <span>{{ language.icon }}</span>
+              <span class="hidden print:inline">{{language.skill}}</span>
             </span>
             }
+
+            <a [href]="'mailto:' + email()" class="hidden items-center gap-1 print:flex">
+              <ac-icon class="h-4" [icon]="emailIcon" />
+              <span> {{email()}} </span>
+            </a>
           </div>
         </div>
         <div class="flex flex-col">
           <span class="text-6xl print:text-4xl">Frontend Architect, Software Engineer</span>
           <a
             href="https://alexciesielski.dev/cv"
-            class="text-foreground/30 hidden text-xs underline print:-mt-3 print:block"
+            class="text-foreground/20 hidden text-xs underline print:-mt-2 print:block"
           >
             View the interactive version of this CV in the browser
           </a>
