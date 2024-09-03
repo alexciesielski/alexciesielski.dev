@@ -1,22 +1,22 @@
-<div class="grid h-full grid-cols-[1fr] grid-rows-[1fr,2fr] gap-x-8 gap-y-16">
-  <a class="container relative mx-auto block overflow-hidden rounded-xl" [href]="'/blog/' + latestPost.slug">
-    <img
-      class="h-full w-full object-cover"
-      [src]="latestPost.attributes.coverImage"
-      [alt]="'Latest blog post cover image'"
-    />
-    <div
-      class="absolute bottom-0 z-10 flex h-[33%] w-full flex-col justify-between bg-white/50 p-4 opacity-75 backdrop-blur"
-    >
-      <div>
-        <h2 class="text-2xl font-bold">{{ latestPost.attributes.title }}</h2>
-        <p>{{ latestPost.attributes.description }}</p>
+<div class="grid h-full grid-cols-[1fr] grid-rows-[auto,2fr] gap-x-8 gap-y-16">
+  <div class="container mx-auto">
+    <a class="relative block overflow-hidden rounded-xl" [href]="'/blog/' + latestPost.slug">
+      <img
+        class="block h-[33vh] w-full object-cover"
+        [src]="latestPost.attributes.coverImage"
+        [alt]="'Latest blog post cover image'"
+      />
+      <div class="absolute bottom-0 z-10 flex w-full flex-col justify-between bg-white/50 p-4 opacity-75 backdrop-blur">
+        <div>
+          <h2 class="text-2xl font-bold">{{ latestPost.attributes.title }}</h2>
+          <p>{{ latestPost.attributes.description }}</p>
+        </div>
+        <div>
+          <span class="text-sm opacity-60"> {{latestPost.attributes.date | date }} </span>
+        </div>
       </div>
-      <div>
-        <span class="text-sm opacity-60"> {{latestPost.attributes.date | date }} </span>
-      </div>
-    </div>
-  </a>
+    </a>
+  </div>
 
   <div class="container flex flex-col gap-y-4 dark:text-white">
     <p class="text-3xl">Recent posts</p>
@@ -30,7 +30,7 @@
         />
         <div>
           <h3 class="text-base">{{ post.attributes.title }}</h3>
-          <p class="text-sm">{{ post.attributes.description }}</p>
+          <p class="text-foreground/50 text-sm">{{ post.attributes.description }}</p>
         </div>
       </a>
       }
