@@ -9,13 +9,18 @@ export default defineEventHandler(async (event) => {
 
   const octokit = new Octokit({ auth: githubToken });
 
-  const response = await octokit.request('GET /users/{username}/events/public', {
-    username: 'alexciesielski',
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  });
+  try {
+    const response = await octokit.request('GET /users/{username}/events/public', {
+      username: 'alexciesielski',
+      headers: {
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    });
 
-  const events = response.data;
-  return events;
+    const events = response.data;
+    return events;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 });

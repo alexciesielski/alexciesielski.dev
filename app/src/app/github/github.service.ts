@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, InjectionToken } from '@angular/core';
-import { BehaviorSubject, finalize, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, Observable, of, tap } from 'rxjs';
 import { GITHUB_PUBLIC_EVENTS_RESPONSE } from './public-events-response';
 
 export const STORAGE = new InjectionToken<Storage | null>('Storage', {
@@ -20,7 +20,8 @@ export type GithubEventType =
   | 'PushEvent'
   | 'CreateEvent'
   | 'IssueCommentEvent'
-  | 'WatchEvent';
+  | 'WatchEvent'
+  | 'ForkEvent';
 
 @Injectable({ providedIn: 'root' })
 export class GithubEventService {
@@ -40,12 +41,13 @@ export class GithubEventService {
     }
 
     this.loading$$.next(true);
-    return this.http.get<GithubEventResponse>('/api/v1/github-activity.json').pipe(
+    return this.http.get<GithubEventResponse>('api/v1/github-activity').pipe(
       tap((events) => {
         this.storage?.setItem('github-last-fetched', String(Date.now()));
         this.storage?.setItem('github-events', JSON.stringify(events));
       }),
       finalize(() => this.loading$$.next(false)),
+      catchError(() => of([])),
     );
   }
 }

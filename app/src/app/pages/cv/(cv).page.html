@@ -1,0 +1,61 @@
+<div class="p-4">
+  <header class="font-title">
+    <div class="grid grid-cols-[1fr_auto] items-center gap-2">
+      <div>
+        <div class="flex flex-wrap items-center gap-4 print:flex-col print:items-start print:gap-0">
+          <h1 class="text-4xl">Alexander Ciesielski</h1>
+          <div class="flex flex-wrap gap-4 text-xl print:text-xs">
+            @for(language of languages; track language.name) {
+            <span [aria-describedby]="language.name" [hlmTooltipTrigger]="language.name + ': ' + language.skill">
+              {{ language.icon }} <span class="hidden print:inline">{{language.skill}}</span>
+            </span>
+            }
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-6xl print:text-4xl">Frontend Architect, Software Engineer</span>
+          <a
+            href="https://alexciesielski.dev/cv"
+            class="text-foreground/30 hidden text-xs underline print:-mt-3 print:block"
+          >
+            View the interactive version of this CV in the browser
+          </a>
+        </div>
+      </div>
+      <img
+        [ngSrc]="'/profile.jpg'"
+        alt="Alexander Ciesielski profile picture"
+        class="ring-primary/5 rounded-full ring-1 dark:ring-white/10"
+        width="120"
+        height="120"
+      />
+    </div>
+  </header>
+
+  <main class="grid break-inside-auto grid-cols-1 gap-4 md:grid-cols-2 print:block">
+    <section acSection id="about" [header]="'About me'">
+      <analog-markdown
+        class="prose lg:prose-lg print:prose-sm dark:prose-invert print:-mb-0 print:-mt-4"
+        [content]="aboutMe()"
+      />
+    </section>
+
+    <section acSection id="highlights" [header]="'Highlights'">
+      <analog-markdown
+        class="prose lg:prose-lg print:prose-sm dark:prose-invert print:-mb-0 print:-mt-4"
+        [content]="highlights()"
+      />
+    </section>
+
+    <section acSection id="projects" [header]="'Recent projects'" class="md:col-span-2">
+      @for(project of uiProjects(); track project.attributes.slug) {
+      <ac-project
+        [project]="project"
+        [techs]="techs()"
+        [expanded]="!!project.expanded"
+        (toggleExpanded)="toggleProjectExpanded(project.attributes.slug)"
+      />
+      }
+    </section>
+  </main>
+</div>

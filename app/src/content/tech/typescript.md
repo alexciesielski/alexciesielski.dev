@@ -1,0 +1,6 @@
+---
+slug: typescript
+title: Typescript
+description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+avatar: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAOVBMVEUvdsQwd8Uwd8UxeMYxeMYwd8YrdcUhccSCqdrE1u1nl9KcuuHa5vRRi83///9zoNazyujz9/wWbsK86njPAAAABnRSTlMJnvr//b+KEDzrAAAAsElEQVR4AeXSAQrDIAyFYdtseVrTZ+r9Dzstc6xgd4H9QAA+QMWEsKwybV2ayUNueoZVbnsE+dGfoWKkIoC0oQMR02hTZGulXQdmjiKMZx/U4u7k0eaeSStbtIFNa8VBa7MmslQFrrftKAInTarKDHU/SKatzlBQutIxQ4HEzhET1Ma1HzxBLQLUbY5Ih8dsZL4g38gzU5Gv1XTP6E/JycwjOi4fBPD1QedSh+f9wr8AYsMQ67mSxS4AAAAASUVORK5CYII=
+---

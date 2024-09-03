@@ -1,0 +1,6 @@
+---
+slug: nx
+title: nx
+description: Nx is a set of extensible dev tools for monorepos, which help you develop like Google, Facebook, and Microsoft.
+avatar: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcBAMAAACAI8KnAAAAMFBMVEVHcEzL1eHL1eHL1eHL1eHL1eHL1eHL1uHL1eHL1eHL1eHL1eHL1eHL1eHL1eHL1eEEq73kAAAAEHRSTlMAMmljRIH/GnO30uylmQ/EUCCQwAAAALtJREFUeAGtzzEIQWEUxfEjkpXJbHjZDPZiUfayAv09pKw2C7NJmeyDMlmUTIoMBpNBBslon3y3V7A7w61f99bp6o9JZHPBCFKiKY0Yv9mWvC+S+9lSkbfafNhV/3BUeHcKSK9ILQSsjUueQygAXB3LNLwRcNjydLzQ8WZQn85pOh7dvQ+nW2ZfN0ahvWUgJX1jBGrWLuWNmrCHlmNcxjvWbk/JGPPp3FkE3EhnqjG6xkTKHT3cSKX117wA4IBOhWXLrx4AAAAASUVORK5CYII=
+---

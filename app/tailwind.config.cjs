@@ -2,14 +2,18 @@ const { createGlobPatternsForDependencies } = require('@nx/angular/tailwind');
 const { join } = require('node:path');
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const { DEFAULT } = require('@tailwindcss/typography/src/styles');
+// const typography = require('@tailwindcss/typography');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  presets: [require('@spartan-ng/ui-core/hlm-tailwind-preset')],
   content: [
     './index.html',
     join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html,md,svg}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
+  darkMode: 'media',
   theme: {
     fontSize: {
       xs: [
@@ -82,6 +86,12 @@ module.exports = {
           lineHeight: '5.5rem',
         },
       ],
+      '8xl': [
+        'var(--fs-8xl)',
+        {
+          lineHeight: '6rem',
+        },
+      ],
     },
     extend: {
       boxShadow: {
@@ -93,6 +103,7 @@ module.exports = {
         tertiary: '#262626',
         white: '#ececec',
         gray: colors.gray,
+        foreground: `hsl(var(--foreground))`,
       },
       borderRadius: {
         '4xl': '2rem',
@@ -101,6 +112,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        title: ['Inter Tight', ...defaultTheme.fontFamily.sans],
       },
       container: {
         center: true,
@@ -109,6 +121,21 @@ module.exports = {
           md: '100%',
           lg: '640px',
           xl: '768px',
+        },
+      },
+      screens: {
+        print: { raw: 'print' },
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+          },
         },
       },
     },

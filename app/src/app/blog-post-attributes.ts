@@ -1,4 +1,4 @@
-export interface PostAttributes {
+export interface BlogPostAttributes {
   title: string;
   slug: string;
   description: string;
@@ -8,6 +8,6 @@ export interface PostAttributes {
   date: Date | string;
 }
 
-export interface AboutMeAttributes extends PostAttributes {
+export interface AboutMeAttributes extends BlogPostAttributes {
   availability: boolean;
 }

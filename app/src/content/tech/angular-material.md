@@ -1,0 +1,6 @@
+---
+slug: angular-material
+title: Angular Material
+description: Angular Material is a UI component library for Angular developers.
+avatar: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAzFBMVEU9ULY7T7c1TbkmS72WdYfim0bohyqgbXtEU7E3TrgtS7mEbJPSkVf/rA3/qBv7jQD/kAD/kQDYgUOQaYchSL1wY53Dimb/qCH/qiPMfVN/Y5JdXKdPVqz/pAD/phj7igD/ngD/zZH/////7tn8plD7gwD2pCn/uFv/9Oj8rGD/2a79tnXOkFv/wW//+/K4hHD/4rz/9OL9wIHSf0uheYH/yIL/7M67d2T/2aT/4LD+zZxoYKH/4bP/8Nf8tWaKZ4vqnjn7lyWydGzdgzvpV4TLAAABGElEQVR4AbXRRYICMRAF0E4HSyCCu7u7O9z/TlNpq7Etf/uiv6zPh9iU2uRfsikJhSPRGGW/hVEeTwghlU6m0hb/7iSTzUkh8/mCUkprXSwhk3LeSN5F10u+kopwqFqr1pUbRIsbrDWarXan67IuEx9pT+Zr/UEL0h46rH0CDAOOWm4GY6MUcQLvaUxnro7AIoh8LvK1xWy5NLzqwqlrjrgR8NbtEjJYznaAe0Q7LvKyfzjujJ7qgFEbyzsDTo+Xy3FxXRxugHcskMTg2Fq1f1hcYIXBLKLFTXsub5U5tkIQ6cMtUNafTgWKoYFupOGCW/uL/Rw5Z3MhDepkMcatXyG0khAFpd9l+mMbjvzxLGWQfoZxxqzP5wus1iJ2YXE35wAAAABJRU5ErkJggg==
+---

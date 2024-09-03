@@ -130,6 +130,16 @@ export class GithubActivityComponent {
               connectingWord: '',
               icon: event.org?.avatar_url,
             };
+          case 'ForkEvent':
+            return {
+              ...event,
+              didWhat: `forked repository`,
+              didWhere: event.repo.name,
+              didTitle: '',
+              clickTarget: event.repo.url,
+              connectingWord: '',
+              icon: event.org?.avatar_url,
+            };
           default:
             return {
               ...event,
@@ -146,7 +156,6 @@ export class GithubActivityComponent {
     map((events) =>
       events.filter((event) => {
         if ((event.type as GithubEventType) === 'CreateEvent') {
-          debugger;
           if (
             event.payload.ref_type === 'branch' ||
             event.payload.ref_type === 'tag' ||

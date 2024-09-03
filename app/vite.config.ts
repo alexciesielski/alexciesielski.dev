@@ -23,8 +23,16 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       analog({
+        ssr: false,
         prerender: {
-          routes: async () => ['/', '/blog', '/api/v1/github-activity.json'],
+          routes: async () => ['/', '/blog', '/cv'],
+        },
+        nitro: {
+          routeRules: {
+            '/cv': {
+              headers: { 'X-Robots-Tag': 'noindex' },
+            },
+          },
         },
       }),
       nxViteTsPaths(),

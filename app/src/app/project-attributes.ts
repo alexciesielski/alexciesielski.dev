@@ -15,14 +15,21 @@ export interface ProjectAttributes {
   description: string;
 
   org: string;
+  orgDescription: string;
   orgUrl: string;
   orgIconUrl: string;
 
-  start: Date | string;
-  end?: Date | string;
+  location: string;
+  remote: boolean;
 
-  tech: Array<{
-    tech: Tech;
-    description?: string;
-  }>;
+  start: Date;
+  end?: Date;
+
+  tech: string[];
+}
+
+export interface TechAttributes {
+  slug: string;
+  title: string;
+  avatar: string;
 }
