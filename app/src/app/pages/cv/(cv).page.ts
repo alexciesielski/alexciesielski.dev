@@ -2,11 +2,14 @@ import { ContentFile, injectContent, injectContentFiles, MarkdownComponent } fro
 import { RouteMeta } from '@analogjs/router';
 import { JsonPipe, NgOptimizedImage } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { mdiEmail, mdiOpenInNew } from '@mdi/js';
 import { compareAsc } from 'date-fns';
-import { take, tap } from 'rxjs';
+import { debounceTime, take, tap } from 'rxjs';
 import { Icon } from '../../components/icon';
 import { Tooltip } from '../../components/tooltip';
+import { HlmInputDirective } from '../../components/ui-input-helm/hlm-input.directive';
 import { ProjectAttributes, TechAttributes } from '../../project-attributes';
 import { injectProjectAttributes } from '../../util/inject-project-attributes';
 import { Project } from './project';
@@ -41,7 +44,17 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'app-cv',
   standalone: true,
-  imports: [Icon, NgOptimizedImage, JsonPipe, MarkdownComponent, Tooltip, CVSection, Project],
+  imports: [
+    Icon,
+    NgOptimizedImage,
+    JsonPipe,
+    MarkdownComponent,
+    Tooltip,
+    CVSection,
+    Project,
+    HlmInputDirective,
+    ReactiveFormsModule,
+  ],
   templateUrl: './(cv).page.html',
   host: {
     class: 'block h-full break-inside-auto',
@@ -129,14 +142,61 @@ export default class CVComponent {
 
   private readonly expandedProjects = signal<Record<string, boolean>>({});
 
+  readonly searchCtrl = new FormControl('', { nonNullable: true });
+  private readonly searchValue = toSignal(this.searchCtrl.valueChanges.pipe(debounceTime(100)), {
+    initialValue: '',
+  });
+
+  readonly startDateCtrl = new FormControl<Date | null>(null);
+  private readonly startDateValue = toSignal(this.startDateCtrl.valueChanges.pipe(debounceTime(100)));
+
   readonly uiProjects = computed(() => {
     const projects = this.projects();
     const expandedProjects = this.expandedProjects();
+    const searchValue = this.searchValue();
+    const startDateValue = this.startDateValue();
 
-    return projects.map((project) => ({
-      ...(project as ContentFile<ProjectAttributes>),
-      expanded: expandedProjects[project.attributes.slug],
-    }));
+    console.log('projects', projects, startDateValue);
+
+    return projects
+      .map((project) => ({
+        ...(project as ContentFile<ProjectAttributes>),
+        expanded: expandedProjects[project.attributes.slug],
+      }))
+      .filter((project) => {
+        if (searchValue === '') {
+          return true;
+        }
+
+        const keys: (keyof ProjectAttributes)[] = ['title', 'description', 'tech', 'org'];
+        const passes = keys.some((key) => {
+          const value = project.attributes[key];
+          if (typeof value === 'string') {
+            return value.toLowerCase().includes(searchValue.toLowerCase());
+          }
+
+          if (Array.isArray(value)) {
+            return value.some((v) => v.toLowerCase().includes(searchValue.toLowerCase()));
+          }
+
+          return false;
+        });
+
+        if (passes) {
+          return true;
+        }
+
+        const content = typeof project.content === 'string' ? project.content : '';
+        return content.toLowerCase().includes(searchValue.toLowerCase());
+      })
+      .filter((project) => {
+        if (!startDateValue) {
+          return true;
+        }
+
+        const startDate = project.attributes.start;
+        return compareAsc(startDate, startDateValue) >= 0;
+      });
   });
 
   readonly mdiOpenInNew = mdiOpenInNew;

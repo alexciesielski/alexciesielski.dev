@@ -1,0 +1,6 @@
+---
+slug: ionic
+title: Ionic
+description: Ionic is a complete open-source SDK for hybrid mobile app development.
+avatar: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAMFBMVEVHcEwlef8lev8lev8lev8lev8sgf8hd/8Wcf/////V5f+gwf+Cr//y+P+60v9YlP/7ZHNrAAAABnRSTlMANtJikeRI9LnRAAABB0lEQVQokW2TURKDMAhEFRUIJHr/25YNtUYrnemHz4UNWafprHklFhFa5+lZy8Ys+EVtyw3NdCEUDeqZUWBfrDLfGJ4r6k5TF7TuZnvlfEGTUiJvpVdzDqEKdZ8ptFLMa3UDP4IqPG9f1mrOrEH36Kzb6cbzbXjiaO9QxtS1C1upGmPNnPXYXaDUNe3UYnFGjCsGt0cfSlPvuqORp1uPseb9xAmtVBFLaCFs3ZG+woo/PeGjredZ5NVQNIKQ/o8i0bUxlOvfEiTsoLVgCcP6NNfXYCfYdi5exsXHWHRYXq+s35jSGJLrsl+j8IuJPkMkPKRPZIwf3dNH92Aj1Kf0Eerrc+Dxc/gAZ3YTJr1LynwAAAAASUVORK5CYII=
+---

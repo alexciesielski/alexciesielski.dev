@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@spartan-ng/ui-tooltip-helm": ["app/src/app/components/ui-tooltip-helm/src/index.ts"]
+      "@spartan-ng/ui-tooltip-helm": ["app/src/app/components/ui-tooltip-helm/src/index.ts"],
+      "@spartan-ng/ui-input-helm": ["ui-input-helm/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

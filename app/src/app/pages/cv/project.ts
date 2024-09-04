@@ -24,7 +24,7 @@ import { ProjectAttributes, TechAttributes } from '../../project-attributes';
     @if (uiProject(); as project) {
       <div class="flex gap-4">
         <img
-          class="mt-1 aspect-square h-12 rounded"
+          class="mt-1 aspect-square h-12 rounded object-contain"
           [src]="project.attributes.orgIconUrl"
           [alt]="project.attributes.org + ' logo'"
         />
