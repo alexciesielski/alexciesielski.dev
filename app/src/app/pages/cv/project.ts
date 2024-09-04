@@ -104,6 +104,7 @@ import { ProjectAttributes, TechAttributes } from '../../project-attributes';
                           class="h-4 rounded"
                           [src]="tech.attributes.avatar"
                           [alt]="tech.attributes.title"
+                          [aria-describedby]="tech.attributes.title"
                           [hlmTooltipTrigger]="tech.attributes.title"
                         />
                       } @else {

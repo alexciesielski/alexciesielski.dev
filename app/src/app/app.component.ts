@@ -2,7 +2,7 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { mdiHome } from '@mdi/js';
-
+import { inject as va } from '@vercel/analytics';
 import { filter, map, shareReplay, startWith } from 'rxjs';
 import { Icon } from './components/icon';
 
@@ -46,7 +46,7 @@ import { Icon } from './components/icon';
 })
 export class AppComponent {
   constructor() {
-    // injectVercelAnalytics();
+    va({ framework: 'angular' });
   }
 
   private readonly router = inject(Router);

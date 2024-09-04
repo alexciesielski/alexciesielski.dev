@@ -153,7 +153,7 @@ export default class CVComponent {
     },
     {
       name: 'English',
-      skill: 'Bi-lingual',
+      skill: 'C2 (full proficiency)',
       icon: '🇬🇧',
     },
   ];
