@@ -2,7 +2,7 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { mdiHome } from '@mdi/js';
-// import { inject as injectVercelAnalytics } from '@vercel/analytics';
+
 import { filter, map, shareReplay, startWith } from 'rxjs';
 import { Icon } from './components/icon';
 

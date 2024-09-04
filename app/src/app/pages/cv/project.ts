@@ -80,7 +80,11 @@ import { ProjectAttributes, TechAttributes } from '../../project-attributes';
               [content]="project.attributes.description"
             />
 
-            <button class="print:hidden" (click)="toggleExpanded.emit()">
+            <button
+              class="underline print:hidden"
+              style="text-decoration-style: dotted"
+              (click)="toggleExpanded.emit()"
+            >
               {{ expanded() ? 'Show less ⤴' : 'Show more ⤵' }}
             </button>
           </div>
@@ -94,16 +98,16 @@ import { ProjectAttributes, TechAttributes } from '../../project-attributes';
               @if (project.attributes.tech.length) {
                 <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
                   @for (tech of project.attributes.tech; track tech.attributes.slug) {
-                    <span class="text-foreground flex items-center gap-1 text-sm opacity-75 print:text-xs">
+                    <span class="text-foreground flex items-center gap-1 text-sm print:text-xs">
                       @if (tech.attributes.avatar) {
                         <img
-                          class="h-5 rounded print:h-4"
+                          class="h-4 rounded"
                           [src]="tech.attributes.avatar"
                           [alt]="tech.attributes.title"
                           [hlmTooltipTrigger]="tech.attributes.title"
                         />
                       } @else {
-                        <ac-icon [icon]="helpIcon" class="h-5 rounded" />
+                        <ac-icon [icon]="helpIcon" class="h-4 rounded" />
                       }
                       {{ tech.attributes.title }}
                     </span>
