@@ -13,6 +13,8 @@ location: Stuttgart, DE
 remote: true
 ---
 
-- Wrote a script, that queried GitHub for all OpenAPI microservice specs, linted and merged those and then called the openapi-generator-cli to generate Typescript interfaces and Angular services so the developers didn't have to manually create those themselves
-- Introduced Typescripts "strict" flags and Angular's "fullTemplateTypeCheck" and refactored the whole app to be compatible
-- Created a generic, reusable datatable component with a corresponding datatable service that encapsulated common logic like editing rows, API queries and UI behavior to make creating new views with a datatable (of which there were a lot) much simpler
+Wrote a script, that queried GitHub for all OpenAPI microservice specs, linted and merged those and then called the openapi-generator-cli to generate Typescript interfaces and Angular services so the developers didn't have to manually create those themselves.
+
+Introduced Typescripts "strict" flags and Angular's "fullTemplateTypeCheck" and refactored the whole app to be compatible.
+
+Created a generic, reusable datatable component with a corresponding datatable service that encapsulated common logic like editing rows, API queries and UI behavior to make creating new views with a datatable (of which there were a lot) much simpler.

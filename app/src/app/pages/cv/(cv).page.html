@@ -60,21 +60,23 @@
     <section acSection id="projects" [header]="projectsHeaderTmpl" class="md:col-span-2">
       <ng-template #projectsHeaderTmpl>
         <div class="flex flex-wrap items-center gap-x-4">
-          <span class="mr-2"> Projects </span>
-          <input
-            class="print:hidden"
-            hlmInput
-            type="text"
-            placeholder="Filter by name, title, tech..."
-            [formControl]="searchCtrl"
-          />
-          <input
-            class="print:hidden"
-            hlmInput
-            type="date"
-            placeholder="Choose startdate"
-            [formControl]="startDateCtrl"
-          />
+          <span> Projects </span>
+          <div class="flex gap-x-2">
+            <input
+              class="print:hidden"
+              hlmInput
+              type="text"
+              placeholder="Filter by name, title, tech..."
+              [formControl]="searchCtrl"
+            />
+            <input
+              class="print:hidden"
+              hlmInput
+              type="date"
+              placeholder="Choose startdate"
+              [formControl]="startDateCtrl"
+            />
+          </div>
         </div>
       </ng-template>
       @for(project of uiProjects(); track project.attributes.slug) {
