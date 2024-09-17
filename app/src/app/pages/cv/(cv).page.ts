@@ -156,8 +156,6 @@ export default class CVComponent {
     const searchValue = this.searchValue();
     const startDateValue = this.startDateValue();
 
-    console.log('projects', projects, startDateValue);
-
     return projects
       .map((project) => ({
         ...(project as ContentFile<ProjectAttributes>),
