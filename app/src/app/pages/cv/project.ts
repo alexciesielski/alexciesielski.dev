@@ -33,16 +33,26 @@ import { ProjectAttributes, TechAttributes } from '../../project-attributes';
           <div class="font-title flex flex-wrap items-center gap-2 text-xl">
             <h3>{{ project.attributes.title }}</h3>
             <span>＠</span>
-            <a
-              class="underline print:no-underline"
-              [aria-describedby]="project.attributes.org"
-              [hlmTooltipTrigger]="project.attributes.orgDescription"
-              [position]="'right'"
-              [href]="project.attributes.orgUrl"
-              target="_blank"
-            >
-              {{ project.attributes.org }}
-            </a>
+            @if (project.attributes.orgUrl) {
+              <a
+                class="underline print:no-underline"
+                [aria-describedby]="project.attributes.org"
+                [hlmTooltipTrigger]="project.attributes.orgDescription"
+                [position]="'right'"
+                [href]="project.attributes.orgUrl"
+                target="_blank"
+              >
+                {{ project.attributes.org }}
+              </a>
+            } @else {
+              <span
+                [aria-describedby]="project.attributes.org"
+                [hlmTooltipTrigger]="project.attributes.orgDescription"
+                [position]="'right'"
+              >
+                {{ project.attributes.org }}
+              </span>
+            }
           </div>
 
           <div class="text-xs text-gray-400 dark:text-gray-100">
