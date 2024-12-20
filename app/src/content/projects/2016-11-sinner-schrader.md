@@ -4,7 +4,7 @@ title: Senior Frontend Developer
 org: SinnerSchrader (acquired by Accenture Interactive)
 orgDescription: SinnerSchrader is one of Europe's leading digital agencies with a focus on the design and development of digital products and services.
 orgUrl: 'https://sinnerschrader.com/'
-orgIconUrl: https://media.licdn.com/dms/image/v2/C4D0BAQEzK58vCl0DWQ/company-logo_100_100/company-logo_100_100/0/1630518648211/sinnerschrader_logo?e=1733356800&v=beta&t=_TPmRGsrp8NKw33kGnCOyPTh-X7INCn0tinICWT5sRI
+orgIconUrl: /projects/sinner-schrader.jpg
 start: 2016-11-01
 end: 2018-01-31
 description: Developed an Ionic app for iOS & Android for one of Germany’s largest internet providers, to facilitate sales of internet, cable and other products for on-foot salesmen.

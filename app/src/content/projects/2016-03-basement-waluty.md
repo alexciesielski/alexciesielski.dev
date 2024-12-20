@@ -4,7 +4,7 @@ title: Angular Frontend Developer
 org: Basement
 orgDescription: Basement is a Polish software house specialized in delivering custom software solutions for the financial sector.
 orgUrl: 'https://basement.pl/'
-orgIconUrl: https://basement.pl/img/logo.png
+orgIconUrl: /projects/basement.jpg
 start: 2016-03-01
 end: 2016-11-31
 description: Designed and implemented 2 Angular 2+ apps to enable clients to exchange foreign currencies on their bank accounts, which has previously been done via phone.

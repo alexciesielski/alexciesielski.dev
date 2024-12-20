@@ -4,7 +4,7 @@ title: Lead Frontend Developer
 org: Edeka
 orgDescription: EDEKA is the largest supermarket corporation in Germany. It consists of several cooperatives of independent supermarkets.
 orgUrl: 'https://www.edeka.de/'
-orgIconUrl: https://media.licdn.com/dms/image/v2/C4D0BAQFActHUVc3ASA/company-logo_100_100/company-logo_100_100/0/1630517143025/edeka_ag_logo?e=1733356800&v=beta&t=WqPXIv6dX08J0uMiSWnwX-8MfSQizqzciZHD1OGNBcI
+orgIconUrl: /projects/edeka.jpg
 start: 2017-10-01
 end: 2018-01-31
 description: Led the development of an Angular 5 web app for one of Germany’s largest retail chains to manage a database of supermarkets.
