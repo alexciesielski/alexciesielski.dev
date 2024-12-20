@@ -57,9 +57,13 @@ import { ProjectAttributes, TechAttributes } from '../../project-attributes';
 
           <div class="text-xs text-gray-400 dark:text-gray-100">
             <span>
-              {{ project.attributes.start | date }} -
+              {{ project.attributes.start | date }}
               @if (project.attributes.end) {
+                -
                 {{ project.attributes.end | date }}
+              } @else {
+                -
+                present
               }
             </span>
 
