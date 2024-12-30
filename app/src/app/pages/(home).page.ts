@@ -1,6 +1,5 @@
 import { RouteMeta } from '@analogjs/router';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import LandingComponent from './(landing)/landing.component';
 
 export const routeMeta: RouteMeta = {
@@ -27,7 +26,7 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LandingComponent, RouterLink],
+  imports: [LandingComponent],
   template: ` <ac-landing /> `,
 })
 export default class HomeComponent {}

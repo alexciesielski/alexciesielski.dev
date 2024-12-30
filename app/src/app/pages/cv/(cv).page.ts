@@ -136,7 +136,7 @@ export default class CVComponent {
 
   readonly projects = computed(() =>
     Object.values(this._projects() || {})
-
+      .filter((project) => project.attributes.visible !== false)
       .sort((a, b) => compareAsc(new Date(b.attributes.start), new Date(a.attributes.start))),
   );
 

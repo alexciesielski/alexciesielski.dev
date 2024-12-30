@@ -26,6 +26,7 @@ export interface ProjectAttributes {
   end?: Date;
 
   tech: string[];
+  visible?: boolean;
 }
 
 export interface TechAttributes {
