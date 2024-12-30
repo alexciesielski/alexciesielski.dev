@@ -60,6 +60,8 @@ import { ProjectAttributes, TechAttributes } from '../../project-attributes';
               {{ project.attributes.start | date }} -
               @if (project.attributes.end) {
                 {{ project.attributes.end | date }}
+              } @else {
+                - present
               }
             </span>
 
@@ -127,7 +129,7 @@ import { ProjectAttributes, TechAttributes } from '../../project-attributes';
               }
 
               <analog-markdown
-                class="prose lg:prose-lg print:prose-sm dark:prose-invert contents"
+                class="prose-sm lg:prose-lg dark:prose-invert contents print:text-xs print:leading-4"
                 [content]="project.content"
               />
             </div>
