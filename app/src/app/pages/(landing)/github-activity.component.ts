@@ -81,7 +81,7 @@ export class GithubActivityComponent {
               didWhat: `opened issue`,
               didWhere: event.repo.name,
               didTitle: event.payload.issue?.title,
-              clickTarget: event.payload.issue?.html_url,
+              clickTarget: event.payload.issue?.url,
               icon: event.org?.avatar_url,
             };
           case 'PullRequestEvent':
@@ -99,7 +99,7 @@ export class GithubActivityComponent {
               didWhat: `pushed to`,
               didWhere: event.repo.name,
               didTitle: event.payload.commits?.[0]?.message,
-              clickTarget: event.payload.commits?.[0]?.url,
+              // clickTarget: event.payload.commits?.[0].,
               icon: event.actor?.avatar_url,
             };
           case 'CreateEvent':
@@ -111,6 +111,8 @@ export class GithubActivityComponent {
               clickTarget: event.repo.url,
               icon: event.org?.avatar_url,
             };
+          case 'PullRequestReviewEvent' as any:
+          case 'PullRequestReviewCommentEvent' as any:
           case 'IssueCommentEvent':
             return {
               ...event,
@@ -163,6 +165,8 @@ export class GithubActivityComponent {
           ) {
             return false;
           }
+        } else if (event.type === 'DeleteEvent') {
+          return false;
         }
 
         return true;
